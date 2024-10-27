@@ -75,7 +75,7 @@ export default function PortfolioSection() {
 
         {/* Filter section */}
         <div className="mt-8 flex justify-center mb-6">
-          <div className="space-x-4 flex items-center justify-center flex-wrap gap-2">
+          <div className="space-x-4 flex items-center justify-center flex-wrap max-md:flex-col gap-2">
             {allSkills.map((skill, index) => (
               <button
                 key={index}

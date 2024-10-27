@@ -65,56 +65,63 @@ const HeaderComponent = () => {
             />
           </div>
           <div className="flex items-center gap-4">
-            <div className="md:relative">
-              <button
-                type="button"
-                className="overflow-hidden rounded-full border border-gray-300 shadow-inner"
-                onClick={toggleUserMenu}
-              >
-                <span className="sr-only">Toggle dashboard menu</span>
-                {currentuser ? ( // شرط التحقق من وجود المستخدم
-                  <Img imgsrc="/avatar-1.jpg" styles="w-[40px] object-cover" />
-                ) : (
-                  <span className="w-[40px] h-[40px] bg-gray-300 rounded-full" />
-                )}
-              </button>
-
-              {isUserMenuOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className={`absolute ${
-                    language === "en" ? "right-8" : "left-8"
-                  } z-10 mt-0.5 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg`}
-                  role="menu"
+            {currentuser && (
+              <div className="md:relative">
+                <button
+                  type="button"
+                  className="overflow-hidden rounded-full border border-gray-300 shadow-inner"
+                  onClick={toggleUserMenu}
                 >
-                  <div className="p-2">
-                    {userMenuItems.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                  <span className="sr-only">Toggle dashboard menu</span>
+                  {currentuser ? ( // شرط التحقق من وجود المستخدم
+                    <Img
+                      imgsrc={
+                        currentuser.image ? currentuser.image : "/avatar-1.jpg"
+                      }
+                      styles="w-[40px] object-cover"
+                    />
+                  ) : (
+                    <span className="w-[40px] h-[40px] bg-gray-300 rounded-full" />
+                  )}
+                </button>
+
+                {isUserMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className={`absolute ${
+                      language === "en" ? "right-8" : "left-8"
+                    } z-10 mt-0.5 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg`}
+                    role="menu"
+                  >
+                    <div className="p-2">
+                      {userMenuItems.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                          role="menuitem"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+
+                    <div className="p-2">
+                      <button
+                        onClick={handleLogout}
+                        className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
                         role="menuitem"
                       >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-
-                  <div className="p-2">
-                    <button
-                      onClick={handleLogout}
-                      className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
-                      role="menuitem"
-                    >
-                      <MdOutlineLogout className="size-4" />
-                      Logout
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-            </div>
+                        <MdOutlineLogout className="size-4" />
+                        Logout
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+            )}
             <div className="w-[40px] h-[40px] border bg-white border-gray-300 rounded-full relative flex items-center justify-center">
               <DarkmodeButton />
             </div>

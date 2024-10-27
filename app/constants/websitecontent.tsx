@@ -7,12 +7,6 @@ export const navlinks = [
   { text: { en: "Contact us", ar: "تواصل معنا" }, link: "/contactus" },
 ];
 
-export const socialicons: string[] = [
-  "/facebook.png",
-  "/instagram.png",
-  "/x.png",
-  "/youtube.png",
-];
 export const blogs = [
   {
     imgSrc: "/portfoliosection/1.jpg",

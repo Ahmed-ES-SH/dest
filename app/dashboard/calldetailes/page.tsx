@@ -16,6 +16,10 @@ export default function Calldetailes() {
     address: "",
     gmail_account: "",
     show_map: false, // إضافة show_map
+    facbook: "",
+    youtube: "",
+    instgram: "",
+    x_account: "",
   });
 
   const [location, setLocation] = useState({});
@@ -32,13 +36,17 @@ export default function Calldetailes() {
 
   const fetchContactInfo = async () => {
     try {
-      const response = await instance.get("/getContactInfo");
-      const data = response.data;
+      const response = await instance.get("/all-details");
+      const data = response.data.data[0];
       setform({
         whatsapp_number: data.whatsapp_number,
         gmail_account: data.gmail_account,
         address: data.address,
         show_map: data.show_map, // جلب قيمة show_map
+        facbook: data.facbook,
+        youtube: data.youtube,
+        instgram: data.instgram,
+        x_account: data.x_account,
       });
       setloading(false);
     } catch (error) {
@@ -55,6 +63,10 @@ export default function Calldetailes() {
     formdata.append("gmail_account", form.gmail_account);
     formdata.append("address", JSON.stringify(location));
     formdata.append("show_map", String(form.show_map)); // إضافة show_map إلى البيانات المرسلة
+    formdata.append("facbook", form.facbook);
+    formdata.append("youtube", form.youtube);
+    formdata.append("instgram", form.instgram);
+    formdata.append("x_account", form.x_account);
     try {
       await instance.post("/updateContactInfo", formdata);
       setdone("تم تحديث المعلومات بنجاح");
@@ -96,6 +108,59 @@ export default function Calldetailes() {
               onChange={handleChange}
               id="whatsapp_number"
               name="whatsapp_number"
+              className="text-xl h-[60px] px-4 py-2 placeholder-shown:px-4 w-full border border-gray-300 dark:bg-main_dash dark:text-secend_text dark:border-gray-600 shadow-md rounded-md outline-none font-semibold text-gray-800"
+            />
+          </div>
+
+          <div className="w-full mb-4">
+            <label htmlFor="facbook" className="text-[18px] py-2">
+              {language === "ar" ? "حساب فيسبوك" : "facebook Account"}
+            </label>
+            <input
+              type="text"
+              value={form.facbook}
+              onChange={handleChange}
+              id="facbook"
+              name="facbook"
+              className="text-xl h-[60px] px-4 py-2 placeholder-shown:px-4 w-full border border-gray-300 dark:bg-main_dash dark:text-secend_text dark:border-gray-600 shadow-md rounded-md outline-none font-semibold text-gray-800"
+            />
+          </div>
+          <div className="w-full mb-4">
+            <label htmlFor="instgram" className="text-[18px] py-2">
+              {language === "ar" ? "حساب انستجرام" : "instgram Account"}
+            </label>
+            <input
+              type="text"
+              value={form.instgram}
+              onChange={handleChange}
+              id="instgram"
+              name="instgram"
+              className="text-xl h-[60px] px-4 py-2 placeholder-shown:px-4 w-full border border-gray-300 dark:bg-main_dash dark:text-secend_text dark:border-gray-600 shadow-md rounded-md outline-none font-semibold text-gray-800"
+            />
+          </div>
+          <div className="w-full mb-4">
+            <label htmlFor="youtube" className="text-[18px] py-2">
+              {language === "ar" ? "حساب يوتيوب" : "youtube Account"}
+            </label>
+            <input
+              type="text"
+              value={form.youtube}
+              onChange={handleChange}
+              id="youtube"
+              name="youtube"
+              className="text-xl h-[60px] px-4 py-2 placeholder-shown:px-4 w-full border border-gray-300 dark:bg-main_dash dark:text-secend_text dark:border-gray-600 shadow-md rounded-md outline-none font-semibold text-gray-800"
+            />
+          </div>
+          <div className="w-full mb-4">
+            <label htmlFor="x_account" className="text-[18px] py-2">
+              {language === "ar" ? "حساب X" : "X Account"}
+            </label>
+            <input
+              type="text"
+              value={form.x_account}
+              onChange={handleChange}
+              id="x_account"
+              name="x_account"
               className="text-xl h-[60px] px-4 py-2 placeholder-shown:px-4 w-full border border-gray-300 dark:bg-main_dash dark:text-secend_text dark:border-gray-600 shadow-md rounded-md outline-none font-semibold text-gray-800"
             />
           </div>

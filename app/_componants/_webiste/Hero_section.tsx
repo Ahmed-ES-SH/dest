@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Img from "../Image";
-import { socialicons } from "@/app/constants/websitecontent";
+
 import { PiCaretDoubleDownDuotone } from "react-icons/pi";
 import Link from "next/link";
 import { instance } from "@/app/Api/axios";
@@ -42,6 +42,12 @@ export default function Hero_section() {
   const [text2, setText2] = useState({ en: "", ar: "" });
   const [text3, setText3] = useState({ en: "", ar: "" });
   const [text4, setText4] = useState({ en: "", ar: "" });
+  const [form, setform] = useState({
+    facbook: "",
+    youtube: "",
+    instgram: "",
+    x_account: "",
+  });
   // حالات الصور
 
   const [currentimage, setcurrentimage] = useState("");
@@ -64,6 +70,27 @@ export default function Hero_section() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }, // تتحرك إلى المكان الأصلي
   };
 
+  useEffect(() => {
+    const getdata = async () => {
+      const response = await instance.get("/getsociallinks");
+      const data = response.data;
+      setform({
+        facbook: data.facebook,
+        youtube: data.youtube,
+        instgram: data.instgram,
+        x_account: data.x_account,
+      });
+    };
+    getdata();
+  }, []);
+
+  const socialicons = [
+    { imgsrc: "/facebook.png", link: form.facbook },
+    { imgsrc: "/instagram.png", link: form.instgram },
+    { imgsrc: "/x.png", link: form.youtube },
+    { imgsrc: "/youtube.png", link: form.x_account },
+  ];
+
   return (
     <>
       {loading ? (
@@ -80,18 +107,19 @@ export default function Hero_section() {
               animate="visible"
               variants={textVariants}
             >
-              <div className="flex items-center gap-4 mb-6">
-                {socialicons.map((src, index) => (
-                  <div
+              <div className="flex items-center flex-wrap gap-4 pt-8">
+                {socialicons.map((item, index) => (
+                  <Link
+                    href={item.link ? item.link : "#"}
                     key={index}
                     className="group relative overflow-hidden w-[34px] h-[34px] flex items-center justify-center rounded-md bg-slate-200/80 shadow-sm"
                   >
                     <Img
-                      imgsrc={src}
+                      imgsrc={item.imgsrc}
                       styles="w-[20px] z-[999] cursor-pointer"
                     />
                     <div className="group-hover:w-full left absolute left-0 top-0 bg-main_orange w-0 duration-300 cursor-pointer h-[500px]"></div>
-                  </div>
+                  </Link>
                 ))}
               </div>
               <h1
@@ -142,7 +170,7 @@ export default function Hero_section() {
               variants={imageVariants}
             >
               <Img
-                imgsrc={currentimage ? currentimage : "/image-3-copyright.svg"}
+                imgsrc={currentimage || "/image-3-copyright.svg"}
                 styles=" w-[1130px]  self-center z-[999] relative rounded-md"
               />
             </motion.div>

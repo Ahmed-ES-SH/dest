@@ -5,6 +5,7 @@ import { FiFilePlus, FiHome } from "react-icons/fi";
 import Link from "next/link";
 import {
   FaBorderAll,
+  FaCommentAlt,
   FaComments,
   FaLayerGroup,
   FaStop,
@@ -17,17 +18,35 @@ import {
   FaNoteSticky,
   FaPhoneFlip,
   FaPlus,
+  FaRegNewspaper,
 } from "react-icons/fa6";
 import { ImBlogger } from "react-icons/im";
 import { BsPlusCircleDotted } from "react-icons/bs";
 import { Usevariables } from "@/app/context/VariablesProvider";
 import { GiTeamDowngrade } from "react-icons/gi";
+import { GrDomain } from "react-icons/gr";
+import { MdAddHome } from "react-icons/md";
 
 const navs = [
+  {
+    name: { en: "main section", ar: "  الواجهة الرئيسية" },
+    icon: <GrDomain className="size-8 my-2 opacity-75" />,
+    to: "/dashboard/hero-section",
+  },
   {
     name: { en: "Home", ar: "الرئيسية" },
     icon: <FiHome className="size-8 my-2 opacity-75" />,
     to: "/dashboard/mainpage",
+  },
+  {
+    name: { en: "Newsletter", ar: "النشرة البريدية" },
+    icon: <FaRegNewspaper className="size-8 my-2 opacity-75" />,
+    to: "/dashboard/newsletter",
+  },
+  {
+    name: { en: "Landing page", ar: "صفحة الهبوط" },
+    icon: <MdAddHome className="size-8 my-2 opacity-75" />,
+    to: "/dashboard/landingpage",
   },
   {
     name: { en: "Requests", ar: "الطلبات" },
@@ -93,6 +112,14 @@ const navs = [
     name: { en: "Contact Information", ar: "معلومات الاتصال" },
     icon: <FaPhoneFlip className="size-8 my-2 opacity-75" />,
     to: "/dashboard/calldetailes",
+  },
+  {
+    name: {
+      en: "Customer Messages and Complaints",
+      ar: "رسائل وشكاوى العملاء",
+    },
+    icon: <FaCommentAlt className="size-8 my-2 opacity-75" />,
+    to: "/dashboard/problems",
   },
   {
     name: { en: "FAQ Section", ar: "قسم الأسئلة والأجوبة" },

@@ -8,7 +8,8 @@ export const VariablesProvider = ({ children }) => {
   const cookie = Cookie();
   const token = cookie.get("madad_token");
   const [language, setLanguage] = useState("en"); // اللغة الافتراضية هي الإنجليزية
-  const [opensidebar, setopensidebar] = useState(false);
+  const [opensidebar, setopensidebar] = useState(true);
+  const [global_loading, setglobal_loading] = useState(false);
   const [currentuser, setcurrentuser] = useState(null); // اللغة الافتراضية هي الإنجليزية
   useEffect(() => {
     const fetchUser = async () => {
@@ -17,9 +18,8 @@ export const VariablesProvider = ({ children }) => {
           throw new Error("No token found");
         }
         const response = await instance.get("/currentuser");
-
-        console.log(response);
         setcurrentuser(response.data.user);
+        throw response;
       } catch (err) {
         console.error("Error fetching user:", err);
       }
@@ -36,6 +36,8 @@ export const VariablesProvider = ({ children }) => {
         currentuser,
         opensidebar,
         setopensidebar,
+        global_loading,
+        setglobal_loading,
       }}
     >
       {children}

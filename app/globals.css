@@ -125,6 +125,8 @@ html {
   }
 }
 
+/* animation background page */
+
 .particles-container {
   position: relative;
   width: 100vw; /* اجعل العرض 100% من نافذة العرض */
@@ -139,6 +141,8 @@ html {
   width: 100%; /* اجعل العرض 100% */
   height: 100%; /* اجعل الارتفاع 100% */
 }
+
+/* loading page */
 
 .loader {
   width: 82px;
@@ -182,4 +186,35 @@ html {
   100% {
     transform: translate(-50%, 10%);
   }
+}
+
+/* toggle page */
+
+.toggle {
+  position: relative;
+  width: 60px; /* عرض الزر */
+  height: 34px; /* ارتفاع الزر */
+  border-radius: 34px; /* الزوايا المستديرة */
+  background-color: #ccc; /* اللون الافتراضي */
+  cursor: pointer; /* تغيير شكل المؤشر عند التحويم */
+  transition: background-color 0.3s; /* تأثير الانتقال */
+}
+
+.toggle.active {
+  background-color: #00bfff; /* اللون عند التفعيل */
+}
+
+.toggle .toggle-circle {
+  position: absolute;
+  top: 2px; /* المسافة من أعلى الزر */
+  left: 2px; /* المسافة من اليسار */
+  width: 30px; /* عرض الدائرة */
+  height: 30px; /* ارتفاع الدائرة */
+  border-radius: 50%; /* جعلها دائرة */
+  background-color: white; /* لون الدائرة */
+  transition: transform 0.3s; /* تأثير الانتقال */
+}
+
+.toggle.active .toggle-circle {
+  transform: translateX(26px); /* تحريك الدائرة عند التفعيل */
 }

@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import React from "react";
 import Navbar from "./_componants/_webiste/Navbar";
-import Hero_section from "./_componants/_webiste/Hero_section";
 import ServicesSection from "./_componants/_webiste/ServicesSection";
 import About from "./_componants/_webiste/About";
 import Value from "./_componants/_webiste/value";
@@ -11,6 +10,7 @@ import BlogSlider from "./_componants/_webiste/Blog";
 import Footer from "./_componants/_webiste/Footer";
 import Quations_Answers from "./_componants/_FAQ/Quations_Answers";
 import dynamic from "next/dynamic";
+import Hero from "./_componants/_webiste/Hero";
 
 export const metadata: Metadata = {
   title: "مدد للدعاية والإعلان | الرئيسية ",
@@ -26,8 +26,8 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="h-screen relative overflow-hidden bg-[#f8f6f4] flex items-center justify-center  lg:overflow-hidden  dark:bg-main_dash dark:text-secend_text">
-        <Hero_section />
+      <div className="h-screen w-full relative overflow-hidden bg-[#f8f6f4] flex items-center justify-center  lg:overflow-hidden  dark:bg-main_dash dark:text-secend_text">
+        <Hero />
       </div>
       <About />
       <Value />

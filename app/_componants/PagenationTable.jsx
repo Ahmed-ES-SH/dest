@@ -251,7 +251,9 @@ const PaginatedTable = ({ headers, api, apidelete, keys }) => {
                       <td>
                         <div className="flex items-center gap-4">
                           <Link
-                            href={`/dashboard/users/${item["id"]}`}
+                            href={`/dashboard/${
+                              api == "/users" ? "users" : "problems"
+                            }/${item["id"]}`}
                             className="text-sky-500"
                           >
                             <FaPen />

@@ -28,9 +28,9 @@ const WhatsappButton = () => {
   return (
     <button
       onClick={handleWhatsAppClick}
-      className="flex group w-[50px] h-[50px] items-center justify-center gap-2 z-[9999] fixed bottom-2 left-8 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-all duration-300"
+      className="flex group w-[60px] h-[60px] items-center justify-center gap-2 z-[9999] fixed bottom-2 left-8 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-all duration-300"
     >
-      <FaWhatsapp size={24} />
+      <FaWhatsapp size={40} />
     </button>
   );
 };

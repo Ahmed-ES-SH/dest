@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import WhatsappButton from "./_webiste/Whatsappbtn";
-import NewsletterSubscription from "./_webiste/Subscribepage";
 import ScrollToTopButton from "./_webiste/Go_up";
 import { Usevariables, VariablesProvider } from "../context/VariablesProvider";
 
@@ -20,7 +19,6 @@ function Content({ children }) {
       {children}
       <WhatsappButton />
       <ScrollToTopButton />
-      <NewsletterSubscription />
     </div>
   );
 }

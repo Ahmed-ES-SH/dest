@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { useEffect, useState } from "react";
-import HeroSectionDash from "./Hero_section_dash";
 import About_dash from "./About_section";
 import Value_dash from "./value_dash";
 import Blog_dash from "./Blog_dash";
@@ -32,7 +31,6 @@ export default function Main() {
     <>
       {!loading ? (
         <div className="mt-8">
-          <HeroSectionDash />
           <About_dash />
           <Value_dash />
           <Blog_dash />

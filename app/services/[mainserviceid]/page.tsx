@@ -72,7 +72,7 @@ export default function SubServicesComponent({ params }) {
           <LoadingSpiner />
         </div>
       ) : (
-        <section className="dark:bg-main_dash dark:text-secend_text">
+        <section className="dark:bg-main_dash dark:text-secend_text h-[70vh]">
           <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
             <div className="mx-auto max-w-lg text-center">
               <h2 className="text-xl text-main_orange my-4 font-bold sm:text-2xl">
@@ -81,7 +81,7 @@ export default function SubServicesComponent({ params }) {
             </div>
 
             {!selectedSubService && (
-              <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 ">
                 {data.map((subService, index) => (
                   <div
                     key={index}
